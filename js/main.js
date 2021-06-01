@@ -1,12 +1,24 @@
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return (max < min) ? Math.floor(Math.random() * (min - max + 1)) + max : Math.floor(Math.random() * (max - min + 1)) + min;}
-getRandomIntInclusive();
-
-function getRandomСoordinate(min, max) {
-  min = Math.ceil(min*100)/100;
-  max = Math.floor(max*100)/100;
-  return (max < min) ? Math.floor((Math.random() * (min - max + 1))*100)/100 + max : Math.floor((Math.random() * (max - min + 1))*100)/100 + min;
+  if (max < min) {
+    const swap = max;
+    max = min;
+    min = swap;
+  }
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-getRandomСoordinate();
+getRandomIntInclusive(10.5, 58.67);
+
+function getRandomСoordinate(min, max, afterPoint = 2) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  if (max < min) {
+    const swap = max;
+    max = min;
+    min = swap;
+  }
+  const coordinate = Math.floor(Math.random() * (max - min + 1)) + min;
+  return coordinate.toFixed(afterPoint);
+}
+getRandomСoordinate(59.41504210490353, 18.25022450632139);
