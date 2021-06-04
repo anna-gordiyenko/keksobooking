@@ -19,6 +19,6 @@ function getRandomСoordinate(min, max, afterPoint = 2) {
     min = swap;
   }
   const coordinate = Math.floor(Math.random() * (max - min + 1)) + min;
-  return coordinate.toFixed(afterPoint);
+  return Number(coordinate.toFixed(afterPoint));
 }
 getRandomСoordinate(59.41504210490353, 18.25022450632139);
