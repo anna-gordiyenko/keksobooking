@@ -8,7 +8,6 @@ function getRandomIntInclusive(min, max) {
   }
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-getRandomIntInclusive(10.5, 58.67);
 
 function getRandomСoordinate(min, max, afterPoint = 2) {
   min = Math.ceil(min);
@@ -21,7 +20,6 @@ function getRandomСoordinate(min, max, afterPoint = 2) {
   const coordinate = Math.floor(Math.random() * (max - min + 1)) + min;
   return Number(coordinate.toFixed(afterPoint));
 }
-getRandomСoordinate(59.41504210490353, 18.25022450632139);
 
 const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, elements.length - 1)];
 
