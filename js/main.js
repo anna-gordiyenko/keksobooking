@@ -1,6 +1,4 @@
-import {similarListFragment} from './popup';
+import {announcementsFragment} from './announcement.js';
 
-const SIMILAR_OBJECT_COUNT = 10;
-
-const similarObjects = new Array(SIMILAR_OBJECT_COUNT).fill(null).map(() => similarListFragment);
-similarObjects;
+const mapCanva = document.querySelector('#map-canvas');
+mapCanva.appendChild(announcementsFragment);
