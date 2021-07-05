@@ -23,7 +23,16 @@ function getRandomСoordinate(min, max, afterPoint = 2) {
 
 const getRandomArrayElement = (elements) => elements[getRandomIntInclusive(0, elements.length - 1)];
 
-export { getRandomIntInclusive, getRandomСoordinate, getRandomArrayElement };
+function handleContent(element, value, complexValue = true) {
+  if (value && complexValue) {
+    element.textContent = value;
+  } else {
+    element.remove();
+  }
+
+}
+
+export { getRandomIntInclusive, getRandomСoordinate, getRandomArrayElement, handleContent };
 
 /*
 const makeUniqueRandomIntegerGenerator = (min, max) => {

@@ -40,29 +40,35 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-const author = {
-  avatar: `img/avatars/${getRandomArrayElement(NUMBERS)}.png`,
-};
+const createAnnouncement = () => ({
+  author: {
+    avatar: `img/avatars/user${getRandomArrayElement(NUMBERS)}.png`,
+  },
+  offer: {
+    title: 'заголовок',
+    address: String(getRandomСoordinate(59.41504210490353, 18.25022450632139)),
+    price: getRandomIntInclusive(50, 3500),
+    type: getRandomArrayElement(TYPES),
+    rooms: getRandomIntInclusive(1, 250),
+    guests: getRandomIntInclusive(1, 500),
+    checkin: getRandomArrayElement(CHECK),
+    checkout: getRandomArrayElement(CHECK),
+    features: new Array(getRandomIntInclusive(1, 6)).fill(null).map(() => getRandomArrayElement(FEATURES)),
+    description: 'описание',
+    photos: new Array(getRandomIntInclusive(1, 3)).fill(null).map(() => getRandomArrayElement(PHOTOS)),
+  },
+  loc: {
+    lat: getRandomСoordinate(35.65000, 35.70000),
+    lng: getRandomСoordinate(139.70000, 139.80000),
+  },
+}
+);
 
-const offer = {
-  title: 'заголовок',
-  address: String(getRandomСoordinate(59.41504210490353, 18.25022450632139)),
-  price: getRandomIntInclusive(50, 3500),
-  type: getRandomArrayElement(TYPES),
-  rooms: getRandomIntInclusive(1, 250),
-  guests: getRandomIntInclusive(1, 500),
-  checkin: getRandomArrayElement(CHECK),
-  checkout: getRandomArrayElement(CHECK),
-  features: new Array(getRandomIntInclusive(1, 6)).fill(null).map(() => FEATURES.slice(0, getRandomArrayElement(FEATURES))),
-  description: 'описание',
-  photos: new Array(getRandomIntInclusive(1, 3)).fill(null).map(() => getRandomArrayElement(PHOTOS)),
-};
+const SIMILAR_OBJECT_COUNT = 10;
+const similarAnnouncement = [];
 
-const loc = {
-  lat: getRandomСoordinate(35.65000, 35.70000),
-  lng: getRandomСoordinate(139.70000, 139.80000),
-};
+for (let idx = 0; idx < SIMILAR_OBJECT_COUNT; idx++) {
+  similarAnnouncement.push(createAnnouncement());
+}
 
-const createAnnouncement = () => ({ author, offer, loc });
-
-export {createAnnouncement};
+export {similarAnnouncement};
