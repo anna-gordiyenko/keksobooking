@@ -42,8 +42,11 @@ const PHOTOS = [
 
 const createAnnouncement = (_, idx) => ({
   author: {
-    avatar: `img/avatars/user${NUMBERS[idx]}.png`,
-  },
+    avatar:
+      if (idx < NUMBERS.length) {
+        `img/avatars/user${NUMBERS[idx]}.png`,
+  }
+},
   offer: {
     title: 'заголовок',
     address: String(getRandomСoordinate(59.41504210490353, 18.25022450632139)),
