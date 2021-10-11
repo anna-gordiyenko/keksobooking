@@ -40,10 +40,13 @@ const PHOTOS = [
   'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
 ];
 
-const createAnnouncement = () => ({
+const createAnnouncement = (_, idx) => ({
   author: {
-    avatar: `img/avatars/user${getRandomArrayElement(NUMBERS)}.png`,
-  },
+    avatar:
+      if (idx < NUMBERS.length) {
+        `img/avatars/user${NUMBERS[idx]}.png`,
+  }
+},
   offer: {
     title: 'заголовок',
     address: String(getRandomСoordinate(59.41504210490353, 18.25022450632139)),
@@ -53,9 +56,9 @@ const createAnnouncement = () => ({
     guests: getRandomIntInclusive(1, 500),
     checkin: getRandomArrayElement(CHECK),
     checkout: getRandomArrayElement(CHECK),
-    features: new Array(getRandomIntInclusive(1, 6)).fill(null).map(() => getRandomArrayElement(FEATURES)),
+    features: new Array(getRandomIntInclusive(1, FEATURES.length)).fill(null).map(() => getRandomArrayElement(FEATURES)),
     description: 'описание',
-    photos: new Array(getRandomIntInclusive(1, 3)).fill(null).map(() => getRandomArrayElement(PHOTOS)),
+    photos: new Array(getRandomIntInclusive(1, PHOTOS.length)).fill(null).map(() => getRandomArrayElement(PHOTOS)),
   },
   loc: {
     lat: getRandomСoordinate(35.65000, 35.70000),
@@ -65,10 +68,6 @@ const createAnnouncement = () => ({
 );
 
 const SIMILAR_OBJECT_COUNT = 10;
-const similarAnnouncement = [];
-
-for (let idx = 0; idx < SIMILAR_OBJECT_COUNT; idx++) {
-  similarAnnouncement.push(createAnnouncement());
-}
+const similarAnnouncement = Array.from({length: SIMILAR_OBJECT_COUNT}, createAnnouncement);
 
 export {similarAnnouncement};
